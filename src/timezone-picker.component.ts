@@ -27,7 +27,14 @@ import 'select2';
           <span *ngIf="showOffset">{{offsetOfTimezone(c.zones[0])}}</span>
       </option>
     </ng-template>
-  </select>`
+  </select>`,
+  providers: [
+    { 
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => MyControlComponent),
+    }
+  ]
 })
 export class TimezonePickerComponent implements AfterViewInit {
   /**
